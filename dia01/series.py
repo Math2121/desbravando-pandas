@@ -3,91 +3,47 @@ import pandas as pd
 
 # %%
 
-idades = [30, 42, 90, 34]
-idades
+# lista de idade
+idade = [31,33,5,7,98,7520,2]
+
+# print(idade)
+s_idade = pd.Series(idade)
+s_idade
+s_idade[0]
+
 
 # %%
-media = sum(idades) / len(idades)
+# métodos de séries
 
-total = 0
-for i in idades:
-    total += (media - i)**2
+# média
+media = s_idade.mean()
 
-variancia = total / (len(idades) - 1) 
-variancia
 
-# %%
-# Transformação para séries Pandas
-series_idades = pd.Series(idades)
-series_idades
+# desvio padrão
+desv = s_idade.std()
 
-# %%
-# Métodos da séries pandas
-# Média
-series_idades.mean()
+# variancia
+vari = s_idade.var()
 
-# %%
-# Variância
-series_idades.var()
 
-# Desvio padrão
-series_idades.std()
+s_idade.describe()
 
-# %%
-# Mediana
-series_idades.median()
-
-# %%
-# 3o Quartil
-series_idades.quantile(0.75)
-
-# %%
-# Sumarização
-series_idades.describe()
-
-# %%
-# Dimensão da série
-series_idades.shape
-
-# %%
-# Navegando na lisa
-idades[0]
-
-# %%
-# Navegando na série
-series_idades[3]
-
-# %%
-# Alterando index da série
-series_idades.index = ['t', 'e', 'o', 'c']
-
-# %%
-# Navegando nos índices novos
-series_idades['t']
 
 # %%
 
-series_idades.index = [40, 10, 30, 20]
-series_idades
+# jeito antigo
+nova_idade = []
 
-# %%
-series_idades
+for i in idade:
+    if i >=30:
+        nova_idade.append(i)
 
-# %%
-series_idades.iloc[2:4]
+nova_idade
 
-# %%
-series_idades.iloc[0:2]
 
-# %%
-series_idades.loc[40]
+# com pandas
 
-# %%
-series_idades.name = 'idades'
-series_idades
+filtro = s_idade >= 30
+s_idade[filtro]
 
-# %%
-
-series_idades = pd.Series(idades, name="idades")
-series_idades
 # %%
